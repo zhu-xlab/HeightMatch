@@ -6,9 +6,38 @@ This repository provides the basic pipeline for **HeightMatch** using **INRIA_Bu
 
 The recommended order is:
 
-1. Generate synthetic height maps
-2. Train the model
-3. Test the model
+1. Prepare the pretrained checkpoint
+2. Generate synthetic height maps
+3. Train the model
+4. Test the model
+
+---
+
+## 0. Prepare the pretrained checkpoint
+
+Before training, make sure the pretrained DINOv2 checkpoint is available in the `pretrained` folder.
+
+Required file:
+
+```text
+pretrained/dinov2_small.pth
+```
+
+Download link:
+
+[DINOv2-Small](https://dl.fbaipublicfiles.com/dinov2/dinov2_vits14/dinov2_vits14_pretrain.pth)
+
+After downloading, rename the file to:
+
+```text
+dinov2_small.pth
+```
+
+and place it in:
+
+```text
+pretrained/
+```
 
 ---
 
@@ -139,6 +168,9 @@ test_results.xlsx
 ## 5. Minimal example
 
 ```bash
+# Step 0: prepare pretrained checkpoint
+# Put pretrained/dinov2_small.pth in the pretrained folder
+
 # Step 1: generate synthetic height maps
 python3 generate_synthetic_height.py \
     --imgdir /home/Datasets/RSSeg/INRIA/Austin/image \
